@@ -1,0 +1,5 @@
+{	
+	"/scaled_pos_joint_traj_controller/follow_joint_trajectory/status": ["actionlib_msgs/GoalStatusArray", "subscriber"],
+	"/move_group/status": ["actionlib_msgs/GoalStatusArray", "subscriber"],
+	"/joint_states": ["sensor_msgs/JointState", "subscriber"]
+}

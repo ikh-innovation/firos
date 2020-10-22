@@ -60,29 +60,39 @@ class Constants:
             
             if "log_level" in configData:
                 cls.LOGLEVEL = configData["log_level"]
+                print("Log Level: "+str(cls.LOGLEVEL))
 
             if "server" in configData and "port" in configData["server"]:
-               cls. MAP_SERVER_PORT = configData["server"]["port"]
+               cls.MAP_SERVER_PORT = configData["server"]["port"]
+               print("Server Port: "+str(cls.MAP_SERVER_PORT))
 
             if "node_name" in configData:
                 cls.ROS_NODE_NAME = configData["node_name"]
+                print("Node Name: "+str(cls.ROS_NODE_NAME))
             
             if "ros_subscriber_queue" in configData:
                 cls.ROS_SUB_QUEUE_SIZE = int(configData["ros_subscriber_queue"])
+                print("ROS Subscriber queue: "+str(cls.ROS_SUB_QUEUE_SIZE))
 
             if "endpoint" in configData and "address" in configData["endpoint"]:
                     cls.EP_SERVER_ADRESS = configData["endpoint"]["address"]
+                    print("EP Server Address: "+str(cls.EP_SERVER_ADRESS))
             else:
                 # If not set, we get ourselves the ip-address
                 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
                 s.connect(("8.8.8.8", 80))
                 cls.EP_SERVER_ADRESS = s.getsockname()[0]
+                print("ROS Subscriber queue: "+str(cls.ROS_SUB_QUEUE_SIZE))
+                print("EP Server Address: "+str(cls.EP_SERVER_ADRESS))
 
             if "endpoint" in configData and "port" in configData["endpoint"]:
                     cls.EP_SERVER_PORT = int(configData["endpoint"]["port"])
+                    print("EP Server Port: "+str(cls.EP_SERVER_PORT))
 
             if "rosbridge_port" in configData:
                 cls.ROSBRIDGE_PORT = int(configData["rosbridge_port"])
+                print("Ros Bridge Port: "+str(cls.ROSBRIDGE_PORT))
 
             if "pub_frequency" in configData:
                 cls.PUB_FREQUENCY = int(configData["pub_frequency"])
+                print("Pub Frequency: "+str(cls.PUB_FREQUENCY))

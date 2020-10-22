@@ -1,0 +1,21 @@
+{
+  "environment": "local",
+  "local": {
+    "node_name": "firos_welding",
+    "cb_type": "UR10_WELDING",
+    "context_type": "UR10_WELDING",
+    "server": {
+      "port": 10100
+    },
+    "contextbroker": {
+        "address"   : "localhost",
+        "port"      : 1026,
+        "subscription": {
+          "throttling": "0",
+          "subscription_length": 500,
+          "subscription_refresh_delay": 0.01
+      }
+    },
+    "log_level":"INFO"
+  }
+}

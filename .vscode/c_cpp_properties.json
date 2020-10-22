@@ -1,0 +1,22 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/michalis/ur10_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/michalis/ur10_ws/src/ur10_ros_pkgs/ros_drivers/controller_stopper/include/**",
+        "/home/michalis/ur10_ws/src/ur10_ros_pkgs/ur10_arm_ikfast_plugin/include/**",
+        "/home/michalis/ur10_ws/src/ur10_ros_pkgs/ros_drivers/ur_calibration/include/**",
+        "/home/michalis/ur10_ws/src/ur10_ros_pkgs/ros_drivers/ur_controllers/include/**",
+        "/home/michalis/ur10_ws/src/ur10_ros_pkgs/modules/ur_kinematics/include/**",
+        "/home/michalis/ur10_ws/src/ur10_ros_pkgs/ros_drivers/ur_robot_driver/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ]
+}

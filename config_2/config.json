@@ -1,0 +1,16 @@
+{
+  "environment": "test",
+  "test": {
+    "node_name": "firos2",
+    "cb_type": "UR10_WELDING",
+    "context_type": "UR10_WELDING",
+    "server": {
+      "port": 10100
+    },
+    "contextbroker": {
+        "address"   : "localhost",
+        "port"      : 1026
+    },
+    "log_level":"INFO"
+  }
+}
