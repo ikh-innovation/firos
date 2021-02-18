@@ -21,6 +21,8 @@ __version__ = "0.0.1a"
 __status__ = "Developement"
 
 import json
+from typing import Dict
+
 import requests
 import os
 
@@ -72,6 +74,18 @@ class CbPublisher(Publisher):
         self.data = data
         self.CB_BASE_URL = "http://{}:{}/v2/entities/".format(data["address"], data["port"])
 
+    @staticmethod
+    def flatten_arrays(obj: Dict) -> Dict:
+        flattened_keys = {}
+
+        for key, value in obj.items():
+            print(key, value)
+            if isinstance(value, list) or isinstance(value, tuple):
+                i = 0
+                for item in value:
+                    flattened_keys[str(key) + "_" + str(i)] = item
+                    i += 1
+        return flattened_keys
 
     def publish(self, topic, rawMsg, msgDefintionDict):
         ''' This is the actual publish-Routine which updates and creates Entities on the
@@ -98,6 +112,8 @@ class CbPublisher(Publisher):
             obj = {s: getattr(rawMsg, s, None) for s in rawMsg.__slots__}
             obj["type"] = rawMsg._type.replace("/", "_slash_") # OCB Specific!!
             obj["id"] = (topic).replace("/", "_slash_") # OCB Specific!!
+            flattened_keys = self.flatten_arrays(obj)
+            obj.update(flattened_keys)
             jsonStr = ObjectFiwareConverter.obj2Fiware(obj, ind=None, dataTypeDict=msgDefintionDict[topic],  ignorePythonMetaData=True, encode=True)
             response = requests.post(self.CB_BASE_URL, data=jsonStr, headers=self.CB_HEADER)
             self._responseCheck(response, attrAction=0, topEnt=topic)
@@ -110,6 +126,8 @@ class CbPublisher(Publisher):
         obj = {s: getattr(rawMsg, s, None) for s in rawMsg.__slots__}
         obj["type"] = rawMsg._type.replace("/", "_slash_") # OCB Specific!!
         obj["id"] = (topic).replace("/", "_slash_") # OCB Specific!!
+        flattened_keys = self.flatten_arrays(obj)
+        obj.update(flattened_keys)
         jsonStr = ObjectFiwareConverter.obj2Fiware(obj, ind=None, dataTypeDict=msgDefintionDict[topic],  ignorePythonMetaData=True, showIdValue=False, encode=True) 
         # print(jsonStr)
 
